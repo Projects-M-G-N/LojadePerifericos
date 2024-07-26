@@ -1,0 +1,114 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    color: #bb86fc;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: #6200ee;
+    text-shadow: 0 0 6px #6200ee;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container-cadastro {
+    background-color: #1f1f1f;
+    padding: 0.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    color: #03a9f4;
+    font-size: 1.8rem;
+}
+
+.grupo-formulario {
+    margin-bottom: 2rem;
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.grupo-formulario .input-wrapper {
+    width: 48%;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #333;
+    background-color: #292929;
+    color: #e0e0e0;
+    outline: none;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #03a9f4;
+    box-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #03a9f4;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #00eeda;
+    transform: translateY(-2px);
+}
+
+p {
+    margin-top: 2rem;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+p a {
+    color: #03a9f4;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+p a:hover {
+    color: #00d2ee;
+    text-shadow: 0 0 6px #00d2ee;
+}
