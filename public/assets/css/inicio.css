@@ -60,21 +60,42 @@ nav {
     transform: scale(1.05);
 }
 
+.header-search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 400px;
+    margin-left: auto;
+}
+
 .header-search {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem 0.75rem 1.5rem;
     border: 2px solid #03a9f4;
     border-radius: 50px;
     background: #1e1e1e;
     color: #e0e0e0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     font-size: 1rem;
-    width: 400px;
-    transition: width 0.3s ease;
-    margin-left: auto;
+    width: 100%;
+    transition: none;
 }
 
 .header-search:focus {
-    width: 450px;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.search-icon:hover {
+    color: #0288d1;
+    transform: scale(1.1);
 }
 
 .filter {
@@ -135,11 +156,12 @@ nav {
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: 1.1rem;
     justify-items: center;
 }
 
 .product-card {
+    margin-bottom: 0.5rem;
     background: #1e1e1e;
     border-radius: 10px;
     padding: 1rem;
@@ -153,7 +175,9 @@ nav {
 }
 
 .product-card img {
-    max-width: 100%;
+    width: 250px; 
+    height: 200px;
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 1rem;
 }

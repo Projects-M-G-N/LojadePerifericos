@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="public/assets/css/inicio.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Loja de Periféricos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -15,7 +16,10 @@
                 <li><a href="cadastro.php">Cadastrar</a></li>
                 <li><a href="#">Histórico de Compras</a></li>
             </ul>
-            <input type="search" class="header-search" placeholder="Buscar produtos...">
+            <div class="header-search-container">
+                <input type="search" class="header-search" placeholder="Buscar produtos...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
         </nav>
     </header>
 
@@ -106,7 +110,7 @@
             </div>
         </div>
     </section>
-
+    
     <footer>
         <p>&copy; 2023 Loja de Periféricos. Todos os direitos reservados.</p>
         <div class="social-media">
