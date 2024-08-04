@@ -33,7 +33,7 @@
                         <textarea id="descricao" name="descricao" required placeholder="Digite a descrição do produto"></textarea>
                     </div>
                 </div>
-                <button type="submit" name="cadastrar">Cadastrar</button>
+                <button type="submit" name="cadastrarProduto">Cadastrar</button>
             </form>
         </div>
     </div>
