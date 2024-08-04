@@ -68,7 +68,7 @@ label {
     font-size: 1rem;
 }
 
-input, textarea {
+input, textarea, select {
     width: 100%;
     padding: 0.75rem;
     border-radius: 20px;
@@ -80,7 +80,7 @@ input, textarea {
     box-sizing: border-box;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     border-color: #03a9f4;
     box-shadow: 0 0 8px rgba(187, 134, 252, 0.5);
 }

@@ -35,6 +35,9 @@
             <li><a href="#mouses">Mouses</a></li>
             <li><a href="#teclados">Teclados</a></li>
             <li><a href="#headsets">Headsets</a></li>
+            <li><a href="#Monitor">Monitores</a></li>
+            <li><a href="#Impressoras">Impressoras</a></li>
+            <li><a href="#Pendrive">Pen Drives</a></li>
         </ul>
     </section>
 
@@ -115,6 +118,10 @@
                 <button>Comprar</button>
             </div>
         </div>
+             
+        <h2 id="Monitor">Monitores</h2>
+        <h2 id="Impressoras">Impressoras</h2>
+        <h2 id="Pendrive">Pen Drives</h2>
     </section>
 
     <footer>

@@ -22,7 +22,15 @@
                     </div>
                     <div class="input-wrapper">
                         <label for="categoria">Categoria</label>
-                        <input type="text" id="categoria" name="categoria" required placeholder="Digite a categoria do produto">
+                        <select id="categoria" name="categoria" required>
+                            <option value="" disabled selected>Selecione a categoria</option>
+                            <option value="mouse">Mouse</option>
+                            <option value="teclado">Teclado</option>
+                            <option value="headset">Headset</option>
+                            <option value="monitor">Monitor</option>
+                            <option value="impressora">Impressora</option>
+                            <option value="pen_drive">Pen Drive</option>
+                        </select>
                     </div>
                     <div class="input-wrapper">
                         <label for="imagem">Imagem do Produto</label>
