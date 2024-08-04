@@ -14,6 +14,7 @@
             <ul class="nav-links">
                 <li><a href="login.php">Entrar</a></li>
                 <li><a href="cadastro.php">Cadastrar</a></li>
+                <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
                 <li><a href="#">Histórico de Compras</a></li>
             </ul>
             <div class="header-search-container">

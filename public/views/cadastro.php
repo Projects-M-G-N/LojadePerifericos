@@ -14,19 +14,19 @@
                 <div class="grupo-formulario">
                     <div class="input-wrapper">
                         <label for="nome">Nome Completo</label>
-                        <input type="text" id="nome" name="nome" required>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
                     </div>
                     <div class="input-wrapper">
                         <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
                     </div>
                     <div class="input-wrapper">
                         <label for="senha">Senha</label>
-                        <input type="password" id="senha" name="senha" required>
+                        <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
                     </div>
                     <div class="input-wrapper">
                         <label for="endereco">Endereço</label>
-                        <input type="text" id="endereco" name="endereco" required>
+                        <input type="text" id="endereco" name="endereco" required placeholder="Digite seu endereço">
                     </div>
                 </div>
                 <button type="submit" name="cadastrar">Cadastrar</button>

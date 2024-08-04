@@ -13,11 +13,11 @@
             <form action="" method="post">
                 <div class="grupo-formulario">
                     <label for="email">E-mail:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
                 </div>
                 <div class="grupo-formulario">
                     <label for="password">Senha:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" required placeholder="Digite sua senha">
                 </div>
                 <button type="submit" name="login">Login</button>
                 <p>Ainda não tem uma conta? <a href="cadastro.php">Registre-se agora</a></p>
