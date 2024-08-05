@@ -28,9 +28,10 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="cadastro.php">Cadastrar</a></li>
                 <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
+                    <li><a href="#">Histórico de Compras</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
-                <li><a href="#">Histórico de Compras</a></li>
+                
             </ul>
             <div class="header-search-container">
                 <input type="search" class="header-search" placeholder="Buscar produtos...">
