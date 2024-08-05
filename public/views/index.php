@@ -1,3 +1,12 @@
+<?php
+$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+
+$categorias = "SELECT * FROM categorias";
+$resultado = mysqli_query($con, $categorias);
+
+$categoria = mysqli_fetch_all($resultado);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -17,9 +26,10 @@
                 <?php if (!isset($_SESSION['logado'])) { ?>
                     <li><a href="login.php">Entrar</a></li>
                     <li><a href="cadastro.php">Cadastrar</a></li>
-                <?php } else {?>
+                <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
-                <?php }?>
+                    <li><a href="logout.php">Sair</a></li>
+                <?php } ?>
                 <li><a href="#">Histórico de Compras</a></li>
             </ul>
             <div class="header-search-container">
@@ -32,96 +42,39 @@
     <section class="filter">
         <h2>Filtrar por Categoria</h2>
         <ul class="filter-list">
-            <li><a href="#mouses">Mouses</a></li>
-            <li><a href="#teclados">Teclados</a></li>
-            <li><a href="#headsets">Headsets</a></li>
-            <li><a href="#Monitor">Monitores</a></li>
-            <li><a href="#Impressoras">Impressoras</a></li>
-            <li><a href="#Pendrive">Pen Drives</a></li>
+            <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
+                <li><a href="#<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a></li>
+            <?php } ?>
         </ul>
     </section>
 
     <section class="products">
-        <h2 id="mouses">Mouses</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images-americanas.b2w.io/produtos/7468504128/imagens/mouse-sem-fio-mouse-de-computador-gamer-silent-pc-mause/7468504128_3_large.jpg" alt="Mouse Gamer">
-                <h3>Mouse Gamer</h3>
-                <p>R$ 199,90</p>
-                <div class="rating">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                <button>Comprar</button>
+        <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
+            <h2 id="<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></h2>
+            <div class="product-grid">
+                <?php
+                $id_categoria = $categoria[$i][0];
+                $produto_query = "SELECT * FROM produtos WHERE categoria='$id_categoria'";
+                $produtos = mysqli_query($con, $produto_query);
+                $produto = mysqli_fetch_all($produtos);
+                for ($j = 0; $j < mysqli_num_rows($produtos); $j++) {
+                ?>
+                    <div class="product-card">
+                        <img src="public/assets/img/<?= $produto[$j][4]?>" alt="<?= $produto[$j][1]?>">
+                        <h3><?= $produto[$j][1]?></h3>
+                        <p>R$ <?= number_format($produto[$j][3], 2, ',', '.')?></p>
+                        <div class="rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9734;</span>
+                        </div>
+                        <button>Comprar</button>
+                    </div>
+                <?php } ?>
             </div>
-            <div class="product-card">
-                <img src="https://m.media-amazon.com/images/I/61l33dfloaL._AC_UF1000,1000_QL80_.jpg" alt="Mouse Gamer">
-                <h3>Mouse Gamer</h3>
-                <p>R$ 199,90</p>
-                <div class="rating">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <div class="product-card">
-                <img src="https://images-americanas.b2w.io/produtos/7468504128/imagens/mouse-sem-fio-mouse-de-computador-gamer-silent-pc-mause/7468504128_3_large.jpg" alt="Mouse Gamer">
-                <h3>Mouse Gamer</h3>
-                <p>R$ 199,90</p>
-                <div class="rating">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-        </div>
-
-        <h2 id="teclados">Teclados</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://images.kabum.com.br/produtos/fotos/472046/teclado-mecanico-gamer-kbm-gaming-tg600-preto-60-e-abnt2-rgb-switch-gateron-red-kgtg600ptvr_1717444896_g.jpg" alt="Teclado Gamer">
-                <h3>Teclado Gamer</h3>
-                <p>R$ 349,90</p>
-                <div class="rating">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-        </div>
-
-        <h2 id="headsets">Headsets</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <img src="https://edifier.com.br/pub/media/catalog/product/cache/f1731b22860b0086fc34e14d5ee03543/g/5/g5bt_edifier.jpg" alt="Headset Gamer">
-                <h3>Headset Gamer</h3>
-                <p>R$ 219,90</p>
-                <div class="rating">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-        </div>
-             
-        <h2 id="Monitor">Monitores</h2>
-        <h2 id="Impressoras">Impressoras</h2>
-        <h2 id="Pendrive">Pen Drives</h2>
+        <?php } ?>
     </section>
 
     <footer>

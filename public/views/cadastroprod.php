@@ -1,3 +1,12 @@
+<?php 
+$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+
+$categorias = "SELECT * FROM categorias";
+$resultado = mysqli_query($con, $categorias);
+
+$categoria = mysqli_fetch_all($resultado);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,12 +33,9 @@
                         <label for="categoria">Categoria</label>
                         <select id="categoria" name="categoria" required>
                             <option value="" disabled selected>Selecione a categoria</option>
-                            <option value="mouse">Mouse</option>
-                            <option value="teclado">Teclado</option>
-                            <option value="headset">Headset</option>
-                            <option value="monitor">Monitor</option>
-                            <option value="impressora">Impressora</option>
-                            <option value="pen_drive">Pen Drive</option>
+                            <?php for ($i=0; $i < mysqli_num_rows($resultado); $i++) { ?>
+                                <option value="<?= $categoria[$i][0]?>"><?= $categoria[$i][1]?></option>
+                            <?php }?>
                         </select>
                     </div>
                     <div class="input-wrapper">
