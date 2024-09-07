@@ -34,11 +34,11 @@ INSERT INTO categorias VALUES (NULL, "Mouses"),
                             (NULL, "Headsets"), 
                             (NULL, "Monitores"), 
                             (NULL, "Impressoras"), 
-                            (NULL, "Pen Drives");
+                            (NULL, "Pendrives");
 
-INSERT INTO produtos VALUES (NULL, "Mouse Gamer", "Mouse Gamer", '199.90', "66b0b8ff20f11.webp", 1), 
-							(NULL, "Teclado Gamer", "Teclado Gamer", '349.90', "66b0b9803f3f9.jpg", 2),
-                            (NULL, "Headset Gamer", "Headset Gamer", '219.90', "66b0b9c567d56.jpg", 3),
-                            (NULL, "Monitor Gamer", "Monitor Gamer", '790.50', "66b0ba4034d0f.webp", 4),
-                            (NULL, "Impressora HP", "Impressora HP", '404.10', "66b0baafb2bf6.avif", 5),
-                            (NULL, "Pen Drive HP", "Pen Drive HP", '53.70', "66b0bb2f3f50a.jpeg", 6);
+INSERT INTO produtos VALUES (NULL, "Mouse Gamer", "Mouse Gamer", '199.90', "Mouses.webp", 1), 
+							(NULL, "Teclado Gamer", "Teclado Gamer", '349.90', "Teclados.jpg", 2),
+                            (NULL, "Headset Gamer", "Headset Gamer", '219.90', "Headsets.jpg", 3),
+                            (NULL, "Monitor Gamer", "Monitor Gamer", '790.50', "Monitores.webp", 4),
+                            (NULL, "Impressora HP", "Impressora HP", '404.10', "Impressoras.avif", 5),
+                            (NULL, "Pen Drive HP", "Pen Drive HP", '53.70', "Pendrives.jpeg", 6);
