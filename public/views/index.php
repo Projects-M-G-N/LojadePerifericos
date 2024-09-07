@@ -31,7 +31,7 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="#">Histórico de Compras</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
-                
+
             </ul>
             <div class="header-search-container">
                 <input type="search" class="header-search" placeholder="Buscar produtos...">
@@ -44,26 +44,26 @@ $categoria = mysqli_fetch_all($resultado);
         <h2>Filtrar por Categoria</h2>
         <ul class="filter-list">
             <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
-                <li><a href="#<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a></li>
+                <li><a href="./produtos.php&produto=<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a></li>
             <?php } ?>
         </ul>
     </section>
 
     <section class="products">
-        <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
-            <h2 id="<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></h2>
-            <div class="product-grid">
+        <h2>Produtos destaque</h2>
+        <div class="product-grid">
+            <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
                 <?php
                 $id_categoria = $categoria[$i][0];
-                $produto_query = "SELECT * FROM produtos WHERE categoria='$id_categoria'";
+                $produto_query = "SELECT * FROM produtos WHERE categoria='$id_categoria' LIMIT 1";
                 $produtos = mysqli_query($con, $produto_query);
                 $produto = mysqli_fetch_all($produtos);
                 for ($j = 0; $j < mysqli_num_rows($produtos); $j++) {
                 ?>
                     <div class="product-card">
-                        <img src="public/assets/img/<?= $produto[$j][4]?>" alt="<?= $produto[$j][1]?>">
-                        <h3><?= $produto[$j][1]?></h3>
-                        <p>R$ <?= number_format($produto[$j][3], 2, ',', '.')?></p>
+                        <img src="public/assets/img/<?= $produto[$j][4] ?>" alt="<?= $produto[$j][1] ?>">
+                        <h3><?= $produto[$j][1] ?></h3>
+                        <p>R$ <?= number_format($produto[$j][3], 2, ',', '.') ?></p>
                         <div class="rating">
                             <span class="star">&#9733;</span>
                             <span class="star">&#9733;</span>
@@ -74,8 +74,8 @@ $categoria = mysqli_fetch_all($resultado);
                         <button>Comprar</button>
                     </div>
                 <?php } ?>
-            </div>
-        <?php } ?>
+            <?php } ?>
+        </div>
     </section>
 
     <footer>
