@@ -28,9 +28,9 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="cadastro.php">Cadastrar</a></li>
                 <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
-                    <li><a href="#">Histórico de Compras</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
+                <li><a href="./compras.php">Histórico de Compras</a></li>
 
             </ul>
             <div class="header-search-container">
@@ -71,7 +71,7 @@ $categoria = mysqli_fetch_all($resultado);
                             <span class="star">&#9733;</span>
                             <span class="star">&#9734;</span>
                         </div>
-                        <button>Comprar</button>
+                        <button onclick="window.location.href='./addProd.php&idProd=<?= $produto[$j][0] ?>'">Comprar</button>
                     </div>
                 <?php } ?>
             <?php } ?>
