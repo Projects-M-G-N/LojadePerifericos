@@ -28,11 +28,18 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="cadastro.php">Cadastrar</a></li>
                 <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
+                    <li><a href="./compras.php">Histórico de Compras</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
-                <li><a href="./compras.php">Histórico de Compras</a></li>
-
             </ul>
+            <div class="dropdown">
+                <button class="dropbtn">Categorias <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
+                        <a href="./produtos.php&produto=<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a>
+                    <?php } ?>
+                </div>
+            </div>
             <div class="header-search-container">
                 <input type="search" class="header-search" placeholder="Buscar produtos...">
                 <i class="fas fa-search search-icon"></i>
@@ -40,17 +47,8 @@ $categoria = mysqli_fetch_all($resultado);
         </nav>
     </header>
 
-    <section class="filter">
-        <h2>Filtrar por Categoria</h2>
-        <ul class="filter-list">
-            <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
-                <li><a href="./produtos.php&produto=<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a></li>
-            <?php } ?>
-        </ul>
-    </section>
-
     <section class="products">
-        <h2>Produtos destaque</h2>
+        
         <div class="product-grid">
             <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
                 <?php
