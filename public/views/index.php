@@ -28,9 +28,9 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="cadastro.php">Cadastrar</a></li>
                 <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
-                    <li><a href="./compras.php">Histórico de Compras</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
+                <li><a href="./compras.php">Minhas Compras</a></li>
             </ul>
             <div class="dropdown">
                 <button class="dropbtn">Categorias <i class="fas fa-chevron-down"></i></button>
@@ -48,7 +48,7 @@ $categoria = mysqli_fetch_all($resultado);
     </header>
 
     <section class="products">
-        
+
         <div class="product-grid">
             <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
                 <?php

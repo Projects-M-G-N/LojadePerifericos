@@ -2,7 +2,9 @@
 
 $con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
 
-$produtos = unserialize($_COOKIE['produtos']);
+if (isset($_COOKIE['produtos'])) {
+    $produtos = unserialize($_COOKIE['produtos']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +13,7 @@ $produtos = unserialize($_COOKIE['produtos']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histórico de Compras</title>
+    <title>Minhas Compras</title>
     <link rel="stylesheet" href="public/assets/css/compras.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -41,24 +43,38 @@ $produtos = unserialize($_COOKIE['produtos']);
     ?>
 
     <div class="container">
-        <h1>Histórico de Compras</h1>
+        <h1>Minhas Compras</h1>
         <div class="product-list">
-            <?php foreach ($produtos as $produto) {
-                $prod = mysqli_fetch_all(mysqli_query($con, "SELECT * FROM produtos WHERE id='$produto'"));
+            <?php
+            if (isset($_COOKIE['produtos'])) {
+                $totalCompra = 0;
+                $indexProduto = 0;
+                foreach ($produtos as $produto) {
+                    $prod = mysqli_fetch_all(mysqli_query($con, "SELECT * FROM produtos WHERE id='$produto'"));
             ?>
-            <div class="product-card">
-                <i class="fas fa-check-circle purchased"></i>
-                <img src="public/assets/img/<?= $prod[0][4] ?>" alt="<?= $prod[0][1] ?>">
-                <div class="product-details">
-                    <div class="product-info">
-                        <h3><?= $prod[0][1] ?></h3>
-                        <p class="purchase-info">Comprado em: <?= $data_compra ?></p>
-                        <p class="product-price">R$ <?= number_format($prod[0][3], 2, ',', '.') ?></p>
+                    <div class="product-card">
+                        <i class="fas fa-check-circle purchased"></i>
+                        <img src="public/assets/img/<?= $prod[0][4] ?>" alt="<?= $prod[0][1] ?>">
+                        <div class="product-details">
+                            <div class="product-info">
+                                <h3><?= $prod[0][1] ?></h3>
+                                <p class="purchase-info">Comprado em: <?= $data_compra ?></p>
+                                <p class="product-price">R$ <?= number_format($prod[0][3], 2, ',', '.') ?></p>
+                            </div>
+                            <a href="./removerProduto.php&indexProd=<?= $indexProduto?>" class="buy-again-btn">Remover</a>
+                        </div>
                     </div>
-                    <a href="./index.php" class="buy-again-btn">Comprar Novamente</a>
+                <?php
+                    $totalCompra += $prod[0][3];
+                    $indexProduto += 1;
+                } ?>
+                <div class="finalizar">
+                    <p>Preço total da compra: R$ <?= number_format($totalCompra, 2, ',', '.') ?></p>
+                    <button onclick="window.location.href='./finalizarCompras.php'">Finalizar Compra</button>
                 </div>
-            </div>
-            <?php } ?>
+            <?php } else { ?>
+                <h2>Nenhum Produto para comprar</h2>
+            <?php }?>
         </div>
     </div>
 
