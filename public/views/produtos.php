@@ -27,7 +27,7 @@ $produto = $_GET['produto'];
                     <li><a href="cadastro.php">Cadastrar</a></li>
                 <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
-                    <li><a href="#">Histórico de Compras</a></li>
+                    <li><a href="./compras.php">Carrinho</a></li>
                 <?php } ?>
                 <li><a href="index.php">Voltar</a></li>
 

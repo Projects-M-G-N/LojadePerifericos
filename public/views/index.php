@@ -30,7 +30,7 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
-                <li><a href="./compras.php">Minhas Compras</a></li>
+                <li><a href="./compras.php">Carrinho</a></li>
             </ul>
             <div class="dropdown">
                 <button class="dropbtn">Categorias <i class="fas fa-chevron-down"></i></button>

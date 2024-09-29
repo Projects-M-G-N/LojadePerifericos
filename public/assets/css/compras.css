@@ -83,13 +83,12 @@ h1 {
     color: #f44336;
 }
 
-/* Data de compra */
 .purchase-info {
     font-size: 0.9rem;
     color: #777;
 }
 
-.buy-again-btn {
+.remo {
     padding: 0.5rem 1rem;
     background-color: #03a9f4;
     color: white;
@@ -99,7 +98,7 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-.buy-again-btn:hover {
+.remo:hover{
     background-color: #0288d1;
     color: white;
 }
@@ -200,4 +199,39 @@ nav {
 .search-icon:hover {
     color: #0288d1;
     transform: scale(1.1);
+}
+
+.finalizar{
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+}
+
+.finalizar p{
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0;
+}
+
+.finalizar button {
+    background-color: #002f6c;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.finalizar button:hover {
+    background-color: #001d48;
+    transform: translateY(-2px); 
 }
