@@ -1,5 +1,7 @@
 <?php
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+session_start();
+
+$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
 
 $categorias = "SELECT * FROM categorias";
 $resultado = mysqli_query($con, $categorias);
@@ -13,7 +15,7 @@ $categoria = mysqli_fetch_all($resultado);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/assets/css/inicio.css">
+    <link rel="stylesheet" href="./assets/css/inicio.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Loja de Periféricos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -36,7 +38,7 @@ $categoria = mysqli_fetch_all($resultado);
                 <button class="dropbtn">Categorias <i class="fas fa-chevron-down"></i></button>
                 <div class="dropdown-content">
                     <?php for ($i = 0; $i < mysqli_num_rows($resultado); $i++) { ?>
-                        <a href="./produtos.php&produto=<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a>
+                        <a href="./produtos.php?produto=<?= $categoria[$i][1] ?>"><?= $categoria[$i][1] ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -59,7 +61,7 @@ $categoria = mysqli_fetch_all($resultado);
                 for ($j = 0; $j < mysqli_num_rows($produtos); $j++) {
                 ?>
                     <div class="product-card">
-                        <img src="public/assets/img/<?= $produto[$j][4] ?>" alt="<?= $produto[$j][1] ?>">
+                        <img src="./assets/img/<?= $produto[$j][4] ?>" alt="<?= $produto[$j][1] ?>">
                         <h3><?= $produto[$j][1] ?></h3>
                         <p>R$ <?= number_format($produto[$j][3], 2, ',', '.') ?></p>
                         <div class="rating">
@@ -69,7 +71,7 @@ $categoria = mysqli_fetch_all($resultado);
                             <span class="star">&#9733;</span>
                             <span class="star">&#9734;</span>
                         </div>
-                        <button onclick="window.location.href='./addProd.php&idProd=<?= $produto[$j][0] ?>'">Comprar</button>
+                        <button onclick="window.location.href='./addProd.php?idProd=<?= $produto[$j][0] ?>'">Comprar</button>
                     </div>
                 <?php } ?>
             <?php } ?>
@@ -77,7 +79,7 @@ $categoria = mysqli_fetch_all($resultado);
     </section>
 
     <footer>
-        <p>&copy; 2023 Loja de Periféricos. Todos os direitos reservados.</p>
+        <p>?copy; 2023 Loja de Periféricos. Todos os direitos reservados.</p>
         <div class="social-media">
             <a href="#" aria-label="Facebook">Facebook</a>
             <a href="#" aria-label="Twitter">Twitter</a>

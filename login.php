@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="public/assets/css/login.css">
+    <link rel="stylesheet" href="./assets/css/login.css">
 </head>
 <body>
     <div class="conteiner">
@@ -26,3 +26,24 @@
     </div>
 </body>
 </html>
+
+<?php 
+
+session_start();
+
+$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+
+if(isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $senha = $_POST['password'];
+    $query = "SELECT * FROM clientes WHERE email='$email' AND senha='$senha'";
+    $comando = mysqli_query($con, $query);
+    if(mysqli_num_rows($comando) == 0) {
+        echo "<script>alert('Usuario não existente')</script>";
+    } else {
+        $_SESSION['logado'] = true;
+        echo "<script>window.location.href = './'</script>";
+    }
+}
+
+?>

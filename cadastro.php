@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Clientes</title>
-    <link rel="stylesheet" href="public/assets/css/cadastro.css">
+    <link rel="stylesheet" href="./assets/css/cadastro.css">
 </head>
 <body>
     <div class="container">
@@ -36,3 +36,26 @@
     </div>
 </body>
 </html>
+
+<?php 
+session_start();
+
+$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+if(isset($_POST['cadastrar'])) {
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $endereco = $_POST['endereco'];
+    $query = "SELECT * FROM clientes WHERE email='$email'";
+    $comando = mysqli_query($con, $query);
+    if(mysqli_num_rows($comando) == 0) {
+        $cad = "INSERT INTO clientes VALUES (NULL, '$nome', '$email', '$senha', '$endereco')";
+        mysqli_query($con, $cad);
+        $_SESSION['logado'] = true;
+        echo "<script>window.location.href = './'</script>";
+    } else {
+        echo "<script>alert('Usuario já existente')</script>";
+    }
+}
+
+?>

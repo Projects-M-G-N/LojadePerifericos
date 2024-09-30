@@ -1,10 +1,12 @@
 <?php
 
+session_start();
+
 if (!isset($_GET['produto'])) {
     echo "<script>window.location.href='./'</script>";
 }
 
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
 
 $categoria = $_GET['produto'];
 
@@ -24,7 +26,7 @@ $produtos = mysqli_fetch_all($produto);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $_GET['produto'] ?></title>
-    <link rel="stylesheet" href="public/assets/css/produtos.css">
+    <link rel="stylesheet" href="./assets/css/produtos.css">
     <title>Loja de Periféricos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -58,7 +60,7 @@ $produtos = mysqli_fetch_all($produto);
             for ($i = 0; $i < mysqli_num_rows($produto); $i++) {
             ?>
                 <div class="product-card">
-                    <img src="public/assets/img/<?= $produtos[$i][4] ?>" alt="<?= $produtos[$i][1] ?>">
+                    <img src="./assets/img/<?= $produtos[$i][4] ?>" alt="<?= $produtos[$i][1] ?>">
                     <h3><?= $produtos[$i][1] ?></h3>
                     <p>R$ <?= number_format($produtos[$i][3], 2, ',', '.') ?></p>
                     <div class="rating">
@@ -68,7 +70,7 @@ $produtos = mysqli_fetch_all($produto);
                         <span class="star">&#9733;</span>
                         <span class="star">&#9734;</span>
                     </div>
-                    <button onclick="window.location.href='./addProd.php&idProd=<?= $produtos[$i][0] ?>'">Comprar</button>
+                    <button onclick="window.location.href='./addProd.php?idProd=<?= $produtos[$i][0] ?>'">Comprar</button>
                 </div>
             <?php } ?>
         </div>

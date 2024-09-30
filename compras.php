@@ -1,6 +1,8 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+session_start();
+
+$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
 
 if (isset($_COOKIE['produtos'])) {
     $produtos = unserialize($_COOKIE['produtos']);
@@ -14,7 +16,7 @@ if (isset($_COOKIE['produtos'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="public/assets/css/compras.css">
+    <link rel="stylesheet" href="./assets/css/compras.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -54,14 +56,14 @@ if (isset($_COOKIE['produtos'])) {
             ?>
                     <div class="product-card">
                         <i class="fas fa-check-circle purchased"></i>
-                        <img src="public/assets/img/<?= $prod[0][4] ?>" alt="<?= $prod[0][1] ?>">
+                        <img src="./assets/img/<?= $prod[0][4] ?>" alt="<?= $prod[0][1] ?>">
                         <div class="product-details">
                             <div class="product-info">
                                 <h3><?= $prod[0][1] ?></h3>
                                 <p class="purchase-info">Adicionado ao carrinho em: <?= $data_compra ?></p>
                                 <p class="product-price">R$ <?= number_format($prod[0][3], 2, ',', '.') ?></p>
                             </div>
-                            <a href="./removerProduto.php&indexProd=<?= $indexProduto?>" class="remo">Remover</a>
+                            <a href="./removerProduto.php?indexProd=<?= $indexProduto?>" class="remo">Remover</a>
                         </div>
                     </div>
                 <?php

@@ -1,5 +1,5 @@
 <?php 
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
 
 $categorias = "SELECT * FROM categorias";
 $resultado = mysqli_query($con, $categorias);
@@ -13,7 +13,7 @@ $categoria = mysqli_fetch_all($resultado);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Produtos</title>
-    <link rel="stylesheet" href="public/assets/css/cadastroprod.css">
+    <link rel="stylesheet" href="./assets/css/cadastroprod.css">
 </head>
 <body>
     <div class="container">
@@ -53,3 +53,23 @@ $categoria = mysqli_fetch_all($resultado);
     </div>
 </body>
 </html>
+
+<?php 
+if (isset($_POST['cadastrarProduto'])) {
+    $nome = $_POST['nome'];
+    $preco = $_POST['preco'];
+    $categoria = $_POST['categoria'];
+    $imagem = $_FILES['imagem']['name'];
+    $novo_nome_do_arquivo = uniqid();
+    $extensao = strtolower(pathinfo($imagem, PATHINFO_EXTENSION));
+    $img_nome = $novo_nome_do_arquivo . "." .  $extensao;
+    move_uploaded_file($_FILES['imagem']['tmp_name'], ".././assets/img/" . $img_nome);
+    $descricao = $_POST['descricao'];
+
+    $produto = "INSERT INTO produtos VALUES (NULL, '$nome', '$descricao', '$preco', '$img_nome', '$categoria')";
+    $comando = mysqli_query($con, $produto);
+
+    echo "<script>window.location.href = './'</script>";
+}
+
+?>
