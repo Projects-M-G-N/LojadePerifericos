@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
 
 $categorias = "SELECT * FROM categorias";
 $resultado = mysqli_query($con, $categorias);
