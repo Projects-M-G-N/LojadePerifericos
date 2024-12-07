@@ -2,8 +2,8 @@
 
 session_start();
 
-$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
-
+// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
 if (isset($_COOKIE['produtos'])) {
     $produtos = unserialize($_COOKIE['produtos']);
 }

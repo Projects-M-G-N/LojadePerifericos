@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
 
 $categorias = "SELECT * FROM categorias";
 $resultado = mysqli_query($con, $categorias);
@@ -30,6 +31,7 @@ $categoria = mysqli_fetch_all($resultado);
                     <li><a href="cadastro.php">Cadastrar</a></li>
                 <?php } else { ?>
                     <li><a href="cadastroprod.php">Cadastrar Produtos</a></li>
+                    <li><a href="historico.php">Histórico de Compras</a></li>
                     <li><a href="logout.php">Sair</a></li>
                 <?php } ?>
                 <li><a href="./compras.php">Carrinho</a></li>
@@ -43,8 +45,11 @@ $categoria = mysqli_fetch_all($resultado);
                 </div>
             </div>
             <div class="header-search-container">
-                <input type="search" class="header-search" placeholder="Buscar produtos...">
-                <i class="fas fa-search search-icon"></i>
+                <input type="search" class="header-search" placeholder="Buscar produtos..." oninput="pesquisar(this.value)">
+                <i class="fas fa-search search-icon" onclick="pesquisar(document.querySelector('header-serach').value)"></i>
+                <div class="header-search-result">
+                    
+                </div>
             </div>
         </nav>
     </header>
@@ -79,13 +84,14 @@ $categoria = mysqli_fetch_all($resultado);
     </section>
 
     <footer>
-        <p>?copy; 2023 Loja de Periféricos. Todos os direitos reservados.</p>
+        <p>&copy; 2023 Loja de Periféricos. Todos os direitos reservados.</p>
         <div class="social-media">
             <a href="#" aria-label="Facebook">Facebook</a>
             <a href="#" aria-label="Twitter">Twitter</a>
             <a href="#" aria-label="Instagram">Instagram</a>
         </div>
     </footer>
+    <script src="./assets/js/pesquisa.js"></script>
 </body>
 
 </html>

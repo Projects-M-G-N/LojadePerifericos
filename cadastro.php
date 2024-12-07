@@ -40,8 +40,8 @@
 <?php 
 session_start();
 
-$con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
-if(isset($_POST['cadastrar'])) {
+// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
+$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');if(isset($_POST['cadastrar'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
