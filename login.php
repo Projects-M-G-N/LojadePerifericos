@@ -31,8 +31,7 @@
 
 session_start();
 
-// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+include "conexao.php";
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $senha = $_POST['password'];
@@ -42,6 +41,7 @@ if(isset($_POST['login'])) {
         echo "<script>alert('Usuario não existente')</script>";
     } else {
         $_SESSION['logado'] = true;
+        $_SESSION['email'] = $email;
         echo "<script>window.location.href = './'</script>";
     }
 }

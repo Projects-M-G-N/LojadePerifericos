@@ -84,6 +84,21 @@ nav {
     outline: none;
 }
 
+.header-search-result {
+    display: none;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    background-color: #e0e0e0;
+}
+
+.header-search-result a p {
+    margin-left: 0.75rem;
+}
+
 .search-icon {
     position: absolute;
     right: 1rem;

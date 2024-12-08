@@ -2,8 +2,7 @@
 
 session_start();
 
-// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+include "conexao.php";
 if (isset($_COOKIE['produtos'])) {
     $produtos = unserialize($_COOKIE['produtos']);
 }
@@ -34,8 +33,11 @@ if (isset($_COOKIE['produtos'])) {
                 <?php } ?>
             </ul>
             <div class="header-search-container">
-                <input type="search" class="header-search" placeholder="Buscar produtos...">
-                <i class="fas fa-search search-icon"></i>
+                <input type="search" class="header-search" placeholder="Buscar produtos..." oninput="pesquisar(this.value)">
+                <i class="fas fa-search search-icon" onclick="pesquisar(document.querySelector('header-serach').value)"></i>
+                <div class="header-search-result">
+                    
+                </div>
             </div>
         </nav>
     </header>
@@ -80,6 +82,7 @@ if (isset($_COOKIE['produtos'])) {
         </div>
     </div>
 
+    <script src="./assets/js/pesquisa.js"></script>
 </body>
 
 </html>

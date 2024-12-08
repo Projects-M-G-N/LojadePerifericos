@@ -29,6 +29,18 @@ CREATE TABLE produtos (
 		REFERENCES categorias (id)
 );
 
+CREATE TABLE compras (
+	id INT NOT NULL AUTO_INCREMENT,
+    id_cliente INT NOT NULL,
+    id_produto INT NOT NULL,
+    data_compra DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_cliente)
+		REFERENCES clientes (id),
+	FOREIGN KEY (id_produto)
+		REFERENCES produtos (id)
+);
+
 INSERT INTO categorias VALUES (NULL, "Mouses"), 
 							(NULL, "Teclados"), 
                             (NULL, "Headsets"), 

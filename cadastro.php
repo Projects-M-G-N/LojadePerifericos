@@ -40,8 +40,9 @@
 <?php 
 session_start();
 
-// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');if(isset($_POST['cadastrar'])) {
+include "conexao.php";
+
+if(isset($_POST['cadastrar'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -52,6 +53,7 @@ $con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');if(isset($_PO
         $cad = "INSERT INTO clientes VALUES (NULL, '$nome', '$email', '$senha', '$endereco')";
         mysqli_query($con, $cad);
         $_SESSION['logado'] = true;
+        $_SESSION['email'] = $email;
         echo "<script>window.location.href = './'</script>";
     } else {
         echo "<script>alert('Usuario já existente')</script>";

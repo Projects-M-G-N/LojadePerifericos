@@ -6,8 +6,7 @@ if (!isset($_GET['produto'])) {
     echo "<script>window.location.href='./'</script>";
 }
 
-// $con = mysqli_connect('localhost', 'root', 'usbw', 'loja_perifericos');
-$con = mysqli_connect('localhost', 'root', '', 'loja_perifericos');
+include "conexao.php";
 $categoria = $_GET['produto'];
 
 $categorias = mysqli_fetch_all(mysqli_query($con, "SELECT id FROM categorias WHERE nome='$categoria' LIMIT 1"));
@@ -46,8 +45,11 @@ $produtos = mysqli_fetch_all($produto);
 
             </ul>
             <div class="header-search-container">
-                <input type="search" class="header-search" placeholder="Buscar produtos...">
-                <i class="fas fa-search search-icon"></i>
+                <input type="search" class="header-search" placeholder="Buscar produtos..." oninput="pesquisar(this.value)">
+                <i class="fas fa-search search-icon" onclick="pesquisar(document.querySelector('header-serach').value)"></i>
+                <div class="header-search-result">
+                    
+                </div>
             </div>
         </nav>
     </header>
@@ -75,6 +77,7 @@ $produtos = mysqli_fetch_all($produto);
             <?php } ?>
         </div>
     </section>
+    <script src="./assets/js/pesquisa.js"></script>
 </body>
 
 </html>
