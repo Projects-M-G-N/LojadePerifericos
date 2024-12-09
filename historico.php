@@ -43,7 +43,7 @@ if (!isset($_SESSION['logado'])) {
     </header>
 
     <div class="container">
-        <h1>Lista de Produtos Desejado</h1>
+        <h1>Lista de Produtos Comprado</h1>
         <div class="product-list">
             <?php
             if (mysqli_num_rows($resultado) > 0) {
